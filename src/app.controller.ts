@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Render } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Render } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import { AppService } from './app.service';
 import GyumolcsData from './GyumolcsData.dto';
@@ -21,4 +21,11 @@ export class AppController {
     const gyumolcsRepo =this.dataSource.getRepository(GyumolcsData);
     return await gyumolcsRepo.find();
   }
+
+  @Delete('GyumolcsData/:id')
+  async deleteGyumolcs(@Param('id') id: number){
+      const gyumolcsRepo = this.dataSource.getRepository(GyumolcsData);
+      gyumolcsRepo.delete(id);
+  }
+
 }
