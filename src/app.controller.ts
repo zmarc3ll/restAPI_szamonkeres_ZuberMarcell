@@ -15,7 +15,7 @@ export class AppController {
   index() {
     return { message: 'Welcome to the homepage' };
   }
-   
+
   @Get('GyumolcsData')
   async gyumolcsLista(){
     const gyumolcsRepo =this.dataSource.getRepository(GyumolcsData);
@@ -34,5 +34,4 @@ export class AppController {
     const gyumolcsRepo = this.dataSource.getRepository(GyumolcsData);
     gyumolcsRepo.save(gyumolcs);
   }
-
 }
