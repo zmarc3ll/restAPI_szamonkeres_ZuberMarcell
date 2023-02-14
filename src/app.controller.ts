@@ -28,4 +28,11 @@ export class AppController {
       gyumolcsRepo.delete(id);
   }
 
+  @Post('GyumolcsData')
+  async createGyumolcs(@Body() gyumolcs: GyumolcsData){
+    gyumolcs.id = undefined;
+    const gyumolcsRepo = this.dataSource.getRepository(GyumolcsData);
+    gyumolcsRepo.save(gyumolcs);
+  }
+
 }
